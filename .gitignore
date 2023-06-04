@@ -6,3 +6,5 @@ dataen.csv
 modelkerasnlp.pkl
 ETL.ipynb
 datafilt.csv
+datares.csv
+resumen.ipynb
