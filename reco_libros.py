@@ -7,12 +7,63 @@ import webbrowser
 import base64
 import io
 import re
+import plotly.graph_objects as go
+import networkx as nx
 
 img = Image.open(r"C:\Users\Juan\Desktop\Proyecto_final_NLP\lechuza3.png")
 data = pd.read_csv(r"C:\Users\Juan\Desktop\Proyecto_final_NLP\datos_final_final.csv")
 st.image(img, width=100)
 st.header('place_holder')
 cop = data[["title","author","school","dif"]]
+
+import streamlit as st
+import networkx as nx
+import matplotlib.pyplot as plt
+import io
+import plotly.express as px
+
+@st.cache_data  # Cache the image generation function
+def generate_graph_image():
+    # Create the graph
+    G = nx.Graph()
+
+    # Define the philosophical genres and their relationships
+    generos = ['Metaphysics', 'History of Philosophy', 'Politics', 'Philosophy of Science', 'Philosophy of Art', 'Ethics']
+    relaciones = [(0, 1), (0, 2), (1, 4), (0, 5), (5, 2), (0, 3), (2, 3)]
+    
+    # Add the nodes to the graph except 'History of Philosophy'
+    for genero in generos:
+        if genero != 'History of Philosophy':
+            G.add_node(genero)
+
+    # Add the relationships to the graph excluding those involving 'History of Philosophy'
+    for relacion in relaciones:
+        if generos[relacion[0]] != 'History of Philosophy' and generos[relacion[1]] != 'History of Philosophy':
+            G.add_edge(generos[relacion[0]], generos[relacion[1]])
+
+    G.add_edge('Philosophy of Art', 'Ethics')
+    pos = nx.spring_layout(G, seed=42)  # Use a seed to ensure consistent layout on each execution
+    pos = {node: (x, y-0.1) for node, (x, y) in pos.items()}  # Slightly shift the nodes downward
+
+    # Configure the graph layout
+    nx.draw_networkx(G, pos, with_labels=True, node_color='lightblue', edge_color='gray', font_size=10, node_size=1000)
+
+    # Configure the title and axes
+    plt.title('A thematic map of philosophy')
+    plt.axis('off')
+    fig = plt.gcf()
+    fig.set_size_inches(10, 6)  # Adjust the width and height as needed
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    plt.tight_layout()
+    
+    return buffer
+
+# Display the image in Streamlit
+buffer = generate_graph_image()
+if st.button('Where to start?'):
+    st.image(buffer)
 
 #Background intelectual
 opciones_a = ['STEM', 'Economics/Bussiness', 'History', 'Literature','Sociology','Other/Surprise me']
@@ -39,7 +90,7 @@ def reco(respuestas):
         filt = data[data["school"].isin(["capitalism", "Ethics", "empiricism", "communism", "plato", "aristotle"])]
 
     elif respuestas["preg1"] == "Literature":
-        filt = data[data["school"].isin(["continental", "communism", "plato", "aristotle", "german_idealism"])]
+        filt = data[data["school"].isin(["continental", "communism", "plato", "aristotle", "german_idealism", "phenomenology", "analytic"])]
 
     elif respuestas["preg1"] == "History":
         filt = data[data["school"].isin(["german_idealism", "phenomenology","continental","capitalism", "communism", "plato", "aristotle"])]
@@ -54,7 +105,7 @@ def reco(respuestas):
 
     
     if respuestas["preg2"] == "Science":
-        filt = filt[filt['title'].str.contains("science|math|logic|physics|geometry|knowledge", case=False)]
+        filt = filt[filt['title'].str.contains("science|math|mathematics|logic|physics|geometry|knowledge", case=False)]
 
     elif respuestas["preg2"] == "Ethics":
             filt = filt[filt['title'].str.contains("biology|ethics|ethic|practical", case=False)]
@@ -66,10 +117,10 @@ def reco(respuestas):
             filt = filt[filt['title'].str.contains("reason|metaphysics|spirit|phenomenology|being|time|reality", case=False)]
     
     elif respuestas["preg2"] == "Politics":
-            filt = filt[filt['title'].str.contains("goverment|right|kapital|treatise|lenin|", case=False)]
+            filt = filt[filt['title'].str.contains("goverment|right|kapital|treatise|lenin|nations", case=False)]
 
     elif respuestas["preg2"] == "Philosophy of Art":
-         filt = filt[filt["title"].str.contains("aesthic|art|nietzsche|greek|literature")]
+         filt = filt[filt["title"].str.contains("aesthic|art|nietzsche|greek|literature"|filt["sentence_lo"].str.contains, case=False)]
     
     #dificultad
 
@@ -77,10 +128,10 @@ def reco(respuestas):
         filt = filt[filt['dif']<=29.0]
     
     elif respuestas["preg3"] == 'I have some experience': 
-        filt = filt[(filt['dif']>29.0) & (filt['dif']<47.0)]
+        filt = filt[(filt['dif']<=47.0)]
     
     elif respuestas["preg3"] == 'I have read a lot':
-        pass
+        pass #los filtros están así porque no está de más revisitar autores "sencillos" aunque se sepa mucho
     
     return filt
 
@@ -114,3 +165,24 @@ if st.button('Filter'):
             st.warning("No results found.")
         else:
             st.write(df_filt)
+
+
+
+dat = pd.DataFrame({"lat":[51.24083,50.08087,46.58022,48.6616,44.47588,40.7251,52.39057,48.77585,51.364344,52.37022,46.97354,48.85661,38.96375,52.20534,51.50735,37.98392,40.59167,33.76009,51.3397,43.61077,49.74999,
+                           51.25621,51.81165,41.90278,55.95325,48.20817,37.88818,49,51.15211,56],
+                    "lon":[12.11611,10.56645,0.34038,9.11564,-73.21207,-73.2453,13.06447,9.18293,-2.7652,4.89517,0.69867,2.35222,35.24332,0.12182,-0.12776,23.72936,23.79472,-0.12844,12.37307,3.87672,6.63714,
+                           7.15076,-2.7163,12.49637,-3.18827,16.37382,-4.77938,2.4,14.13617,-3.19],
+                    "name":["Nietzsche|1884-1900|","Kant|1724-1804|","Foucault|1926-1984|","Heidegger|1889-1976|","Dewey|1859-1952|","Kripke|1940-2022|","Ernst Haeckel|1834-1919|","Hegel|1770-1831|","Locke|1632-1704|",
+                    "Spinoza|1632-1677|","Descartes|1596-1650|","Voltaire|1694-1778|","Epictetus|55-135|","Keynes|1883-1946|","Mill|1806-1873|","Plato|427-347 a.C|","Aristotle|384-322 a.C|","Derrida|1930-2004|",
+                    "Leibniz|1646-1716|","Comte|1798-1857|", "Marx|1818-1883|","Engels|1820-1895|","Russel|1872-1970|","Boethius|480-524|","Hume|1711-1776|","Popper|1902-1994|","Averroes|1126-1198|","Malebranche|1638-1715|","Fichte|1762-1814|","Smith|1723-1790|"]})
+
+
+# Mapa
+import plotly.express as px
+if st.button('Show map'):
+    fig = px.scatter_mapbox(dat, lat="lat", lon="lon",
+    hover_name='name', zoom=3)
+
+    fig.update_layout(mapbox_style="open-street-map")
+    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    st.plotly_chart(fig)
