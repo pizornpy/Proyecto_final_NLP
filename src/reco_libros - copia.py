@@ -13,7 +13,7 @@ import networkx as nx
 img = Image.open(r"C:\Users\Juan\Desktop\Proyecto_final_NLP\lechuza3.png")
 data = pd.read_csv(r"C:\Users\Juan\Desktop\Proyecto_final_NLP\datos_final_final.csv")
 st.image(img, width=100)
-st.header('place_holder')
+st.title('Philoapp')
 cop = data[["title","author","school","dif"]]
 
 import streamlit as st
@@ -62,8 +62,43 @@ def generate_graph_image():
 
 # Display the image in Streamlit
 buffer = generate_graph_image()
+
+met ='''
+Metaphysics: Metaphysics is a branch of philosophy that explores fundamental questions about the nature of reality. It delves into the nature of existence, identity, time, space, causality, and the relationship between mind and matter. Metaphysics examines concepts such as substance, being, essence, and the ultimate nature of things. It seeks to understand the fundamental principles and structures that underlie the physical world and our experiences within it. 
+'''
+hist = '''
+History of Philosophy: The history of philosophy is the study of philosophical ideas and thinkers throughout time. It traces the development of philosophical thought from ancient civilizations to the present day. This field examines various philosophical movements, such as ancient Greek philosophy, medieval philosophy, Renaissance philosophy, Enlightenment philosophy, and modern and contemporary philosophy. The history of philosophy provides insights into how ideas have evolved, influenced one another, and shaped the course of intellectual history.'
+'''
+pol ='''
+Politics: Politics is the branch of philosophy concerned with the study of governance, power, and the organization of human societies. It explores questions about the nature of political authority, the origins of political systems, the distribution of power, the ethics of political action, and the ideal forms of government. Political philosophy also examines concepts such as justice, rights, liberty, equality, democracy, and the role of individuals and communities in shaping the social and political order.'
+'''
+sci = '''
+hilosophy of Science: The philosophy of science investigates the nature, methods, and limits of scientific knowledge. It examines the underlying assumptions, principles, and methodologies employed in scientific inquiry. Philosophers of science explore concepts such as the scientific method, causality, explanation, confirmation, induction, and the nature of scientific theories. They also delve into the relationship between science and other areas of human knowledge, such as metaphysics, epistemology, and ethics.'
+'''
+
+art='''
+Philosophy of Art: The philosophy of art explores questions concerning the nature, meaning, and value of art. It examines the aesthetic experience, artistic creation, interpretation, and the criteria for assessing artistic quality. Philosophers of art explore concepts such as beauty, expression, representation, creativity, and the relationship between art and truth. They also explore the cultural, historical, and social dimensions of art and its role in human life and society.
+'''
+eth='''
+Ethics: Ethics is the branch of philosophy concerned with moral principles, values, and the study of what is right and wrong. It examines questions about how individuals should act, what constitutes a good life, and the foundations of moral judgments. Ethical theories provide frameworks for evaluating human behavior and making ethical choices. They explore concepts such as consequentialism, deontology, virtue ethics, and ethical relativism. Ethics also investigates topics like moral responsibility, justice, moral reasoning, and the relationship between ethics and other branches of philosophy.
+'''
+
 if st.button('Where to start?'):
+    st.header("Topics")
+    st.subheader("Metaphysics")
+    st.write(met)
+    st.subheader("History of Philosophy")
+    st.write(hist)
+    st.subheader("Political Philosophy")
+    st.write(pol)    
+    st.subheader("Philosophy of Science")
+    st.write(sci)
+    st.subheader("Philosophy of Art")
+    st.write(art)
+    st.subheader("Ethics")
+    st.write(eth)
     st.image(buffer)
+
 
 #Background intelectual
 opciones_a = ['STEM', 'Economics/Bussiness', 'History', 'Literature','Sociology','Other/Surprise me']
