@@ -24,7 +24,7 @@ En su lugar hice una bag of words, es decir, guardar todas las palabras que apar
 ### .¿Cómo clasificarlos? 
 Tras estudiar Keras y las distintas capas que puede tener una red neuronal para NLP, me decidí por lo siguiente 
 
-![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/keras_config.png")
+![](https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/keras_config.png)
 
 
 ### Resumiento e intentándolo hacer accesible:
@@ -42,11 +42,11 @@ Finalmente, la capa densa final es la que se encarga de asignar la problabilidad
 
 Finalmente usamos Streamlit para la interfaz, añadimos un mapa conceptual y una breve explicación a los motores de búsqueda. Tambíen incluimos un mapa interactivo con algunos puntos marcados con el lugar de nacimiento y fecha de nacimiento y muerte de algunos autores, todo con la intención de hacer más sencilla la contexualización. 
 
-![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/buscador.png")
+![](https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/buscador.png)
 
-![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/filtros.png")
+![](https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/filtros.png)
 
 
-![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/mapa.png")
+![](https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/mapa.png)
 =======
 
