@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Proyecto Final NLP
 
 ## Objetivo:
@@ -9,7 +9,7 @@
 ### ·¿Cómo etiquetar los libros? 
 Vamos a etiquetarlos según escuelas y a usar el conocimiento propio para elegir diseñar las recomendaciones más adecuadas, pero sigue quedando el cómo. Vamos a utilizar un CSV de Kaggle con algunos textos etiquetados y una red neuronal construida con Keras para que clasifique automáticamente. Este es el dataframe resultante del CSV etiquetado:
 
-![]("C:\Users\Juan\Desktop\Proyecto_final_NLP\img\df_og.png")
+![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/df_og.png")
 
 
 
@@ -24,7 +24,7 @@ En su lugar hice una bag of words, es decir, guardar todas las palabras que apar
 ### .¿Cómo clasificarlos? 
 Tras estudiar Keras y las distintas capas que puede tener una red neuronal para NLP, me decidí por lo siguiente 
 
-![](C:\Users\Juan\Desktop\Proyecto_final_NLP\img\keras_config.png)
+![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/keras_config.png")
 
 
 ### Resumiento e intentándolo hacer accesible:
@@ -42,11 +42,11 @@ Finalmente, la capa densa final es la que se encarga de asignar la problabilidad
 
 Finalmente usamos Streamlit para la interfaz, añadimos un mapa conceptual y una breve explicación a los motores de búsqueda. Tambíen incluimos un mapa interactivo con algunos puntos marcados con el lugar de nacimiento y fecha de nacimiento y muerte de algunos autores, todo con la intención de hacer más sencilla la contexualización. 
 
-![]("C:\Users\Juan\Desktop\Proyecto_final_NLP\img\buscador.png")
+![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/buscador.png")
 
-![]("C:\Users\Juan\Desktop\Proyecto_final_NLP\img\filtros.png")
+![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/filtros.png")
 
 
-![]("C:\Users\Juan\Desktop\Proyecto_final_NLP\img\mapa.png")
+![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/mapa.png")
 =======
 
