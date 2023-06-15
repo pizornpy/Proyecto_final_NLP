@@ -9,7 +9,7 @@
 ### ·¿Cómo etiquetar los libros? 
 Vamos a etiquetarlos según escuelas y a usar el conocimiento propio para elegir diseñar las recomendaciones más adecuadas, pero sigue quedando el cómo. Vamos a utilizar un CSV de Kaggle con algunos textos etiquetados y una red neuronal construida con Keras para que clasifique automáticamente. Este es el dataframe resultante del CSV etiquetado:
 
-![]("https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/df_og.png")
+![](https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/df_og.png)
 
 
 
