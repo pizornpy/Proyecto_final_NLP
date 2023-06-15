@@ -42,6 +42,9 @@ Finalmente, la capa densa final es la que se encarga de asignar la problabilidad
 
 Finalmente usamos Streamlit para la interfaz, añadimos un mapa conceptual y una breve explicación a los motores de búsqueda. Tambíen incluimos un mapa interactivo con algunos puntos marcados con el lugar de nacimiento y fecha de nacimiento y muerte de algunos autores, todo con la intención de hacer más sencilla la contexualización. 
 
+Mi objetivo era hacer deploy de la aplicación para que se pudiera utilizar, pero el CSV principal del que "bebe" es demasiado grande para GitHub. Añado un par de fotos. 
+
+
 ![](https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/buscador.png)
 
 ![](https://github.com/pizornpy/Proyecto_final_NLP/blob/main/img/filtros.png)
